@@ -3,7 +3,14 @@ import React from "react";
 
 const Cta = () => {
   return (
-    <section className="cta-banner4 d-flex align-items-center">
+    <section
+      className="cta-banner4 d-flex align-items-center"
+      style={{
+        backgroundImage: "url('/images/backrounf.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="container">
         <div className="row">
           <div className="col-xl-10 mx-auto" data-aos="fade-in">

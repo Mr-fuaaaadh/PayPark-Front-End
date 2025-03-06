@@ -72,54 +72,6 @@ const Home_V5 = () => {
         </div>
       </section>
 
-      {/* <section className="pb90 pb30-md">
-        <div className="container">
-          <div className="row" data-aos="fade-up" data-aos-delay="0">
-            <div className="col-lg-6 mx-auto">
-              <div className="main-title2 text-center">
-                <h2 className="title">Explore Apartment Types</h2>
-                <p className="paragraph">
-                  Get some Inspirations from 1800+ skills
-                </p>
-              </div>
-            </div>
-          </div> */}
-          {/* End .row */}
-
-          {/* <div className="row" data-aos="fade-up" data-aos-delay="300">
-            <ApartmentTypes />
-          </div> */}
-          {/* End .row */}
-        {/* </div>
-      </section> */}
-      {/* End Explore Apartment Types cities */}
-
-      {/* Explore Apartment */}
-      {/* <section className="pb90 pb30-md bgc-thm-light">
-        <div className="container">
-          <div className="row">
-            <div
-              className="col-lg-6 m-auto wow fadeInUp"
-              data-wow-delay="300ms"
-            >
-              <div className="main-title text-center">
-                <h2 className="title">See How Realton Can Help</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
-              </div>
-            </div>
-          </div> */}
-          {/* End .row */}
-
-          {/* <div className="row">
-            <Explore />
-          </div>
-        </div>
-      </section> */}
-      {/* End Explore Apartment */}
-
-      {/* Explore property-city */}
       <section className="pb40-md pb90">
         <div className="container">
           <div
@@ -156,78 +108,6 @@ const Home_V5 = () => {
         </div>
       </section>
       <Cta />
-      <section className="pb50-md">
-        <div className="container maxw1600">
-          <div className="row  justify-content-center text-center align-items-center">
-            <div className="col-auto">
-              <div
-                className="main-title"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <h2 className="title">People Love Living with Realton</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-lg-12">
-              <div
-                className="testimonial-slider"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <Testimonial />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section className="pb90 pb30-md">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6 m-auto" data-aos="fade-up">
-              <div className="main-title text-start text-md-center">
-                <h2 className="title">From Our Blog</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="row" data-aos="fade-up" data-aos-delay="300">
-            <Blog />
-          </div>
-        </div>
-      </section>
-
-      {/* <section className="our-partners pt0">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12" data-aos="fade-up">
-              <div className="main-title text-center">
-                <h6>Trusted by the world’s best</h6>
-              </div>
-            </div>
-            <div className="col-lg-12 text-center">
-              <div
-                className="dots_none nav_none"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <Partner />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* End Our Partners */}
 
       <section className="footer-style1 pt60 pb-0">
         <Footer />
