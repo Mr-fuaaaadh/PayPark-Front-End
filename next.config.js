@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['localhost'], // Add 'localhost' to the allowed domains
-    },
-  };
-  
-  module.exports = nextConfig;
-  
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "13.60.216.198",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
