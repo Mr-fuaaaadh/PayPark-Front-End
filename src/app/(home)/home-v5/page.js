@@ -15,7 +15,8 @@ import Link from "next/link";
 import PropertyListing from "@/components/home/home-v5/PropertyListing";
 
 export const metadata = {
-  title: "Home v5 || Homez - Real Estate NextJS Template",
+  title: "payparking - Parking Station",
+  description: "payparking - Parking Station",
 };
 
 const Home_V5 = () => {

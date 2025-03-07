@@ -43,14 +43,8 @@ const Footer = () => {
               <AppWidget />
             </div>
           </div>
-          {/* End .col */}
         </div>
-        {/* End .row */}
       </div>
-      {/* End .container */}
-
-      <Copyright />
-      {/* End copyright */}
     </>
   );
 };

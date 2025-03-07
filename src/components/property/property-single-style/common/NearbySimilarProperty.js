@@ -1,12 +1,30 @@
 "use client";
-import listings from "@/data/listings";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Navigation, Pagination } from "swiper";
+import Image from "next/image";
+import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
 import "swiper/swiper-bundle.min.css";
 
 const NearbySimilarProperty = () => {
+  const [sliderItems, setSliderItems] = useState([]);
+  const apiEndpoint = "http://13.60.216.198"; // Replace with your API base URL
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${apiEndpoint}/user/parking/stations/`);
+        setSliderItems(response.data.data);
+        console.log("Fetched parking stations:", response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Swiper
@@ -22,22 +40,14 @@ const NearbySimilarProperty = () => {
         }}
         slidesPerView={1}
         breakpoints={{
-          300: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 2,
-          },
-          1200: {
-            slidesPerView: 3,
-          },
+          300: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 },
         }}
       >
-        {listings.slice(0, 5).map((listing) => (
-          <SwiperSlide key={listing.id}>
+        {sliderItems.map((item) => (
+          <SwiperSlide key={item.ownerID}>
             <div className="item">
               <div className="listing-style1">
                 <div className="list-thumb">
@@ -45,50 +55,34 @@ const NearbySimilarProperty = () => {
                     width={382}
                     height={248}
                     className="w-100 h-100 cover"
-                    src={listing.image}
-                    alt="listings"
+                    src={item.images?.[0]?.image ? `${apiEndpoint}${item.images[0].image}` : "/placeholder.jpg"}
+                    alt={item.owner_name}
                   />
                   <div className="sale-sticker-wrap">
-                    {listing.forRent && (
-                      <div className="list-tag rounded-0 fz12">
-                        <span className="flaticon-electricity" />
-                        FEATURED
-                      </div>
-                    )}
-                  </div>
-                  <div className="list-price">
-                    {listing.price} / <span>mo</span>
+                    <div className="list-tag rounded-0 fz12">
+                      PARKING STATION
+                    </div>
                   </div>
                 </div>
                 <div className="list-content">
                   <h6 className="list-title">
-                    <Link href={`/single-v1/${listing.id}`}>{listing.title}</Link>
+                    <Link href={`/parking/${item.ownerID}`}>{item.owner_name}</Link>
                   </h6>
-                  <p className="list-text">{listing.location}</p>
+                  <p className="list-text">{item.owner_address}</p>
                   <div className="list-meta d-flex align-items-center">
-                    <a href="#">
-                      <span className="flaticon-bed" /> {listing.bed} bed
-                    </a>
-                    <a href="#">
-                      <span className="flaticon-shower" /> {listing.bath} bath
-                    </a>
-                    <a href="#">
-                      <span className="flaticon-expand" /> {listing.sqft} sqft
-                    </a>
+                    <span>
+                      📍 {item.latitude}, {item.longitude}
+                    </span>
                   </div>
                   <hr className="mt-2 mb-2" />
                   <div className="list-meta2 d-flex justify-content-between align-items-center">
-                    <span className="for-what">For Rent</span>
-                    <div className="icons d-flex align-items-center">
-                      <a href="#">
-                        <span className="flaticon-fullscreen" />
-                      </a>
-                      <a href="#">
-                        <span className="flaticon-new-tab" />
-                      </a>
-                      <a href="#">
-                        <span className="flaticon-like" />
-                      </a>
+                    <span className="for-what">Available Plots: {item.plots.length}</span>
+                    <div className="pricing">
+                      {item.pricing.map((price) => (
+                        <span key={price.id} className="me-2">
+                          {price.vehicle_type}: ₹{price.hourly_rate}/hr
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>

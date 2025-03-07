@@ -3,19 +3,19 @@ import React from "react";
 const ContactMeta = () => {
   const contactInfoData = [
     {
-      text: "Address",
-      info: "329 Queensberry Street, North Melbourne VIC 3051, Australia.",
-      link: "#", // Empty link value for the first object
+      text: "Parking Address",
+      info: "123 Parking Lane, Downtown City, XYZ 45678.",
+      link: "#",
     },
     {
-      text: "Total Free Customer Care",
-      info: "+(0) 123 050 945 02",
-      link: "tel:+012305094502",
+      text: "Parking Support Hotline",
+      info: "+(0) 987 654 3210",
+      link: "tel:+09876543210",
     },
     {
-      text: "Need Live Support?",
-      info: "hi@homez.com",
-      link: "mailto:hi@homez.com",
+      text: "Payment Assistance",
+      info: "support@payparking.com",
+      link: "mailto:support@payparking.com",
     },
   ];
 

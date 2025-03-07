@@ -24,7 +24,7 @@ import MortgageCalculator from "@/components/property/property-single-style/comm
 import WalkScore from "@/components/property/property-single-style/common/WalkScore";
 
 export const metadata = {
-  title: "Property Single V5 || Homez - Real Estate NextJS Template",
+  title: "Pay & Parking || Station",
 };
 
 const SingleV5 = ({params}) => {
@@ -219,9 +219,9 @@ const SingleV5 = ({params}) => {
             <div className="col-auto">
               <div className="main-title">
                 <h2 className="title">Nearby Similar Homes</h2>
-                <p className="paragraph">
+                {/* <p className="paragraph">
                   Aliquam lacinia diam quis lacus euismod
-                </p>
+                </p> */}
               </div>
             </div>
             {/* End header */}
