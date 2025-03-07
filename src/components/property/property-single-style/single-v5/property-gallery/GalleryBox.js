@@ -36,7 +36,7 @@ const GalleryBox = () => {
     if (ownerID) {
       fetchImages();
     }
-  }, [ownerID]);
+  }, [ownerID,apiEndpoint]);
 
 
   return (

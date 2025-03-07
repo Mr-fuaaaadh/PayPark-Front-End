@@ -23,7 +23,7 @@ const PropertiesByCities = () => {
     };
 
     fetchData();
-  }, []);
+  }, [apiEndpoint]);
 
   return (
     <>

@@ -25,7 +25,8 @@ const ReviewBoxForm = () => {
   useEffect(() => {
     if (success) setSuccess(false);
     if (error) setError(null);
-  }, [rating, reviewText]);
+  }, [rating, reviewText, success, error]); // ✅ Added missing dependencies
+
 
   // Submit handler
   const handleSubmit = async (e) => {

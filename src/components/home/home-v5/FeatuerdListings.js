@@ -14,7 +14,7 @@ const FeaturedListings = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiEndpoint}/user/parking/stations/`); // Replace with your API endpoint
+        const response = await axios.get(`${apiEndpoint}/user/parking/stations/`);
         setListings(response.data.data);
       } catch (error) {
         console.error("Error fetching parking station data:", error);
@@ -22,7 +22,8 @@ const FeaturedListings = () => {
     };
 
     fetchData();
-  }, []);
+}, [apiEndpoint]); // ✅ Add `apiEndpoint` here
+
 
   return (
     <>

@@ -39,7 +39,7 @@ const AllReviews = () => {
     };
 
     if (ownerID) fetchReviews();
-  }, [ownerID]); // Removed apiEndpoint from dependencies as it is static
+  }, [ownerID, apiEndpoint]); 
 
   // Sorting Logic
   const sortedReviews = useMemo(() => {
