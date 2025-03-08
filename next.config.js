@@ -8,6 +8,9 @@ const nextConfig = {
       },
     ],
   },
+  output: 'standalone',  // Ensures compatibility with Netlify
+  trailingSlash: true,   // Helps with route handling
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;
