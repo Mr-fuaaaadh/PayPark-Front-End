@@ -1,15 +1,24 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+// pages/_document.js
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
-export default function Document() {
-  return (
-    <Html lang="en">
-      <Head>
-        {/* Move next/script components here if using beforeInteractive */}
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+          {/* Move the Script tag here */}
+          <Script
+            strategy="beforeInteractive"
+            srsrc="https://checkout.razorpay.com/v1/checkout.js"
+          />
+        </body>
+      </Html>
+    );
+  }
 }
+
+export default MyDocument;

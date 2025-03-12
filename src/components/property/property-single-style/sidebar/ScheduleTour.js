@@ -230,10 +230,8 @@ const ScheduleTour = () => {
   // --------------------------------------------------------------------------
   return (
     <>
-      {/* Load the Razorpay checkout script */}
       <Script
         src="https://checkout.razorpay.com/v1/checkout.js"
-        strategy="beforeInteractive"
       />
       <div className="ps-navtab">
         <div className="tab-content" id="pills-tabContent">
