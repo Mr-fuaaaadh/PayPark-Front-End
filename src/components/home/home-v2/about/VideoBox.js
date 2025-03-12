@@ -1,5 +1,5 @@
 "use client";
-import "node_modules/react-modal-video/scss/modal-video.scss";
+import "react-modal-video/scss/modal-video.scss";
 import { useState } from "react";
 import ModalVideo from "react-modal-video";
 

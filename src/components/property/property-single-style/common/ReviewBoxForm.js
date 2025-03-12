@@ -49,7 +49,7 @@ const ReviewBoxForm = () => {
       };
 
       const response = await axios.post(
-        `${apiEndpoint}api/parkig/station/review/`,
+        `${apiEndpoint}/api/parkig/station/review/`,
         reviewData,
         {
           headers: {

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ModalVideo from "react-modal-video";
-import "node_modules/react-modal-video/scss/modal-video.scss";
+import "react-modal-video/scss/modal-video.scss";
 
 const PropertyVideo = () => {
   const [isOpen, setOpen] = useState(false);

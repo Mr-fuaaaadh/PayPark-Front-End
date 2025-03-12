@@ -139,7 +139,7 @@ const ScheduleTour = () => {
         amount: amountInPaise,
       };
   
-      const response = await fetch(`${apiEndpoint}api/payment/initiate/`, {
+      const response = await fetch(`${apiEndpoint}/api/payment/initiate/`, {
         method: "POST",
         headers: {
           Authorization: `${token}`,
@@ -175,7 +175,7 @@ const ScheduleTour = () => {
         order_id: orderData.order_id,
         handler: async function (res) {
           try {
-            const verifyRes = await fetch(`${apiEndpoint}api/payment/verify/`, {
+            const verifyRes = await fetch(`${apiEndpoint}/api/payment/verify/`, {
               method: "POST",
               headers: {
                 Authorization: `${token}`,
