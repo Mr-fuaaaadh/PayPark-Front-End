@@ -1,13 +1,23 @@
 "use client";
-import Select from "react-select";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import PriceRange from "./PriceRange";
 import Bedroom from "./Bedroom";
 import Bathroom from "./Bathroom";
 import Amenities from "./Amenities";
 import { useRouter } from "next/navigation";
 
+// Dynamically import react-select to prevent SSR mismatch
+const Select = dynamic(() => import("react-select"), { ssr: false });
+
 const AdvanceFilterModal = () => {
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const catOptions = [
     { value: "Banking", label: "Apartments" },
     { value: "Bungalow", label: "Bungalow" },
@@ -17,6 +27,7 @@ const AdvanceFilterModal = () => {
     { value: "Townhome", label: "Townhome" },
     { value: "Villa", label: "Villa" },
   ];
+  
   const locationOptions = [
     { value: "All Cities", label: "All Cities" },
     { value: "California", label: "California" },
@@ -29,27 +40,23 @@ const AdvanceFilterModal = () => {
   ];
 
   const customStyles = {
-    option: (styles, { isFocused, isSelected, isHovered }) => {
-      return {
-        ...styles,
-        backgroundColor: isSelected
-          ? "#eb6753"
-          : isHovered
-          ? "#eb675312"
-          : isFocused
-          ? "#eb675312"
-          : undefined,
-      };
-    },
+    option: (styles, { isFocused, isSelected }) => ({
+      ...styles,
+      backgroundColor: isSelected
+        ? "#eb6753"
+        : isFocused
+        ? "#eb675312"
+        : undefined,
+    }),
   };
+
+  if (!isClient) return null; // Prevents hydration issues
 
   return (
     <div className="modal-dialog modal-dialog-centered modal-lg">
       <div className="modal-content">
         <div className="modal-header pl30 pr30">
-          <h5 className="modal-title" id="exampleModalLabel">
-            More Filter
-          </h5>
+          <h5 className="modal-title">More Filter</h5>
           <button
             type="button"
             className="btn-close"
@@ -57,7 +64,6 @@ const AdvanceFilterModal = () => {
             aria-label="Close"
           />
         </div>
-        {/* End modal-header */}
 
         <div className="modal-body pb-0">
           <div className="row">
@@ -70,7 +76,6 @@ const AdvanceFilterModal = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
 
           <div className="row">
             <div className="col-sm-6">
@@ -78,8 +83,8 @@ const AdvanceFilterModal = () => {
                 <h6 className="list-title">Type</h6>
                 <div className="form-style2 input-group">
                   <Select
-                    defaultValue={[catOptions[1]]}
-                    name="colors"
+                    defaultValue={catOptions[1]}
+                    name="property-type"
                     options={catOptions}
                     styles={customStyles}
                     className="select-custom"
@@ -89,23 +94,16 @@ const AdvanceFilterModal = () => {
                 </div>
               </div>
             </div>
-            {/* End .col-6 */}
 
             <div className="col-sm-6">
               <div className="widget-wrapper">
                 <h6 className="list-title">Property ID</h6>
                 <div className="form-style2">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="RT04949213"
-                  />
+                  <input type="text" className="form-control" placeholder="RT04949213" />
                 </div>
               </div>
             </div>
-            {/* End .col-6 */}
           </div>
-          {/* End .row */}
 
           <div className="row">
             <div className="col-sm-6">
@@ -116,7 +114,6 @@ const AdvanceFilterModal = () => {
                 </div>
               </div>
             </div>
-            {/* End .col-md-6 */}
 
             <div className="col-sm-6">
               <div className="widget-wrapper">
@@ -126,9 +123,7 @@ const AdvanceFilterModal = () => {
                 </div>
               </div>
             </div>
-            {/* End .col-md-6 */}
           </div>
-          {/* End .row */}
 
           <div className="row">
             <div className="col-sm-6">
@@ -136,8 +131,8 @@ const AdvanceFilterModal = () => {
                 <h6 className="list-title">Location</h6>
                 <div className="form-style2 input-group">
                   <Select
-                    defaultValue={[locationOptions[0]]}
-                    name="colors"
+                    defaultValue={locationOptions[0]}
+                    name="location"
                     styles={customStyles}
                     options={locationOptions}
                     className="select-custom"
@@ -147,7 +142,6 @@ const AdvanceFilterModal = () => {
                 </div>
               </div>
             </div>
-            {/* End .col-md-6 */}
 
             <div className="col-sm-6">
               <div className="widget-wrapper">
@@ -155,27 +149,17 @@ const AdvanceFilterModal = () => {
                 <div className="space-area">
                   <div className="d-flex align-items-center justify-content-between">
                     <div className="form-style1">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Min."
-                      />
+                      <input type="text" className="form-control" placeholder="Min." />
                     </div>
                     <span className="dark-color">-</span>
                     <div className="form-style1">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Max"
-                      />
+                      <input type="text" className="form-control" placeholder="Max" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* End .col-md-6 */}
           </div>
-          {/* End .row */}
 
           <div className="row">
             <div className="col-lg-12">
@@ -186,7 +170,6 @@ const AdvanceFilterModal = () => {
             <Amenities />
           </div>
         </div>
-        {/* End modal body */}
 
         <div className="modal-footer justify-content-between">
           <button className="reset-button">
@@ -194,13 +177,17 @@ const AdvanceFilterModal = () => {
             <u>Reset all filters</u>
           </button>
           <div className="btn-area">
-            <button data-bs-dismiss="modal" type="submit" className="ud-btn btn-thm" onClick={() => router.push("/map-v1")} >
+            <button
+              data-bs-dismiss="modal"
+              type="button"
+              className="ud-btn btn-thm"
+              onClick={() => router.push("/map-v1")}
+            >
               <span className="flaticon-search align-text-top pr10" />
               Search
             </button>
           </div>
         </div>
-        {/* End modal-footer */}
       </div>
     </div>
   );
