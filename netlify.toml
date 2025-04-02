@@ -1,9 +1,0 @@
-[build]
-  publish = ".next"    # This tells Netlify to publish the `.next` folder
-  command = "next build"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
