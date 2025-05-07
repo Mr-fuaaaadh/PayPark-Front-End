@@ -4,14 +4,9 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import "../../public/scss/main.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap";
 
 import { DM_Sans, Poppins } from "next/font/google";
 import { useEffect } from "react";
-
-if (typeof window !== "undefined") {
-  import("bootstrap");
-}
 
 // DM_Sans font
 const dmSans = DM_Sans({
@@ -29,10 +24,14 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
   useEffect(() => {
+    // Init AOS
     Aos.init({
       duration: 1200,
       once: true,
     });
+
+    // Import bootstrap JS on client side only
+    import("bootstrap");
   }, []);
 
   return (
