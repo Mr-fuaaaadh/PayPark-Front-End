@@ -10,6 +10,8 @@ const PropertyHeader = ({ id }) => {
 
   const apiEndpoint = process.env.NEXT_PUBLIC_REST_API_ENDPOINT;
 
+  console.log("API Endpoint:", apiEndpoint); // Debugging line to check the API endpoint
+
   useEffect(() => {
     const fetchStations = async () => {
       try {

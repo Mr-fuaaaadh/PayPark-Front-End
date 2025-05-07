@@ -6,10 +6,6 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "13.60.216.198",
-      },
-      {
         protocol: "https",
         hostname: "backend.payandpark.online",
       },
