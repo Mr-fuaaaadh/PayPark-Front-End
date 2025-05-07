@@ -33,12 +33,12 @@ const Hero = () => {
   }, [apiEndpoint]);
 
   // Avoid SSR mismatch by rendering only on the client
-  if (!isClient) return null;
+  if (!isClient) return <div>Loading...</div>; // or a spinner, for smoother UX
 
   return (
     <>
       <div className="hero-large-home5">
-        {sliderItems.length > 0 && (
+        {Array.isArray(sliderItems) && sliderItems.length > 0 && (
           <Swiper
             direction="vertical"
             spaceBetween={0}
@@ -47,8 +47,7 @@ const Hero = () => {
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             modules={[Thumbs]}
             thumbs={{
-              swiper:
-                thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+              swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
             }}
             style={{ height: "850px" }}
           >
@@ -95,7 +94,7 @@ const Hero = () => {
         )}
       </div>
 
-      {sliderItems.length > 0 && (
+      {Array.isArray(sliderItems) && sliderItems.length > 0 && (
         <div className="custom_thumbs">
           <Swiper
             direction="vertical"
