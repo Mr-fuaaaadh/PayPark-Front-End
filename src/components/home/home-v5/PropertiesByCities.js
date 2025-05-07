@@ -25,6 +25,11 @@ const PropertiesByCities = () => {
     fetchData();
   }, [apiEndpoint]);
 
+  // Ensure stationData is an array and has content before rendering Swiper
+  if (!Array.isArray(stationData) || stationData.length === 0) {
+    return <div>Loading...</div>; // You can replace this with a more specific loading indicator if necessary
+  }
+
   return (
     <>
       <Swiper
