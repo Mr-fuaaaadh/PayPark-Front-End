@@ -22,7 +22,7 @@ const FeaturedListings = () => {
     };
 
     fetchData();
-}, [apiEndpoint]); // ✅ Add `apiEndpoint` here
+  }, [apiEndpoint]); // ✅ Add `apiEndpoint` here
 
 
   return (
@@ -54,49 +54,54 @@ const FeaturedListings = () => {
           },
         }}
       >
-        {listings.map((listing) => (
-          <SwiperSlide key={listing.ownerID}>
-            <div className="item">
-              <div className="listing-style7 mb60">
-                <div className="list-thumb">
-                  <Image
-                    width={382}
-                    height={248}
-                    className="w-100 h-100 cover"
-                    src={`${apiEndpoint}${listing.images[0]?.image || "/default-image.jpg"}`}
-                    alt={listing.owner_name}
-                  />
-                  <div className="sale-sticker-wrap">
-                    <div className="list-tag2 rounded-0 fz12">AVAILABLE</div>
-                  </div>
-                </div>
-                <div className="list-content">
-                  <h6 className="list-title">
-                    <Link href={`/single-v5/${listing.ownerID}/`}>
-                      {listing.owner_name}
-                    </Link>
-                  </h6>
-
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="list-price">
-                      Starting at ₹
-                      {Math.min(
-                        ...listing.pricing.map((price) => price.hourly_rate)
-                      )}{" "}
-                      / hour
+        {listings.length > 0 ? (
+          listings.map((listing) => (
+            <SwiperSlide key={listing.ownerID}>
+              <div className="item">
+                <div className="listing-style7 mb60">
+                  <div className="list-thumb">
+                    <Image
+                      width={382}
+                      height={248}
+                      className="w-100 h-100 cover"
+                      src={`${apiEndpoint}${listing.images[0]?.image || "/default-image.jpg"}`}
+                      alt={listing.owner_name}
+                    />
+                    <div className="sale-sticker-wrap">
+                      <div className="list-tag2 rounded-0 fz12">AVAILABLE</div>
                     </div>
-                    <div className="list-meta2 d-flex align-items-center">
-                      <span className="mr10">
-                        <i className="flaticon-location-pin mr5" />
-                        {listing.owner_address}
-                      </span>
+                  </div>
+                  <div className="list-content">
+                    <h6 className="list-title">
+                      <Link href={`/single-v5/${listing.ownerID}/`}>
+                        {listing.owner_name}
+                      </Link>
+                    </h6>
+
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="list-price">
+                        Starting at ₹
+                        {Math.min(
+                          ...listing.pricing.map((price) => price.hourly_rate)
+                        )}{" "}
+                        / hour
+                      </div>
+                      <div className="list-meta2 d-flex align-items-center">
+                        <span className="mr10">
+                          <i className="flaticon-location-pin mr5" />
+                          {listing.owner_address}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))
+        ) : (
+          <div>Loading listings...</div> // Loading state or message
+        )}
+
       </Swiper>
 
       <div className="row align-items-center justify-content-center">
