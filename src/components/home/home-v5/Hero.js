@@ -59,7 +59,7 @@ const Hero = () => {
                     className="slider-slide-item"
                     style={{
                       backgroundImage: item.images && item.images.length > 0
-                        ? `url(http://13.60.216.198${item.images[0].image})`
+                        ? `url(https://backend.payandpark.online${item.images[0].image})`
                         : "url(/images/default-placeholder.jpg)",
                     }}
                   >
@@ -114,7 +114,7 @@ const Hero = () => {
                   className="cover"
                   src={
                     item.images && item.images.length > 0
-                      ? `http://13.60.216.198${item.images[0].image}`
+                      ? `https://backend.payandpark.online${item.images[0].image}`
                       : "/images/default-placeholder.jpg"
                   }
                   alt="thumb"
