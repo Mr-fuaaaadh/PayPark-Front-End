@@ -9,7 +9,7 @@ import "swiper/swiper-bundle.min.css";
 
 const NearbySimilarProperty = () => {
   const [sliderItems, setSliderItems] = useState([]);
-  const apiEndpoint = "http://13.60.216.198"; // Replace with your API base URL
+  const apiEndpoint = "https://backend.payandpark.online"; // Replace with your API base URL
 
   useEffect(() => {
     const fetchData = async () => {

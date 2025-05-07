@@ -15,6 +15,7 @@ const FeaturedListings = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${apiEndpoint}/user/parking/stations/`);
+        console.log("Response data:", response.data.data);
         setListings(response.data.data);
       } catch (error) {
         console.error("Error fetching parking station data:", error);
@@ -24,6 +25,10 @@ const FeaturedListings = () => {
     fetchData();
   }, [apiEndpoint]); // ✅ Add `apiEndpoint` here
 
+  // Ensure that listings is defined before rendering the swiper
+  if (!Array.isArray(listings)) {
+    return <div>Loading...</div>; // or a more specific loading indicator
+  }
 
   return (
     <>
@@ -99,9 +104,8 @@ const FeaturedListings = () => {
             </SwiperSlide>
           ))
         ) : (
-          <div>Loading listings...</div> // Loading state or message
+          <div>No listings available</div> // You can add a fallback message
         )}
-
       </Swiper>
 
       <div className="row align-items-center justify-content-center">
