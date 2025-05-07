@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
       once: true,
     });
 
-    // Import bootstrap JS on client side only
     import("bootstrap");
   }, []);
 
