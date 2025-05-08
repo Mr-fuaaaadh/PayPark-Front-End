@@ -25,7 +25,7 @@ const ScheduleTour = () => {
   const RAZORPAY_KEY_ID = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
   const apiEndpoint = process.env.NEXT_PUBLIC_REST_API_ENDPOINT;
 
-  console.log("API Endpoint:", apiEndpoint); // Debugging line to check the API endpoint
+
 
   // Since localStorage is only available on the client, check for window existence.
   const token =

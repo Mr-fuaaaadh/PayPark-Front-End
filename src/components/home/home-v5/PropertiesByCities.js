@@ -12,7 +12,7 @@ const PropertiesByCities = () => {
   const [stationData, setStationData] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_REST_API_ENDPOINT;
 
-  console.log("API Endpoint:", apiEndpoint); // Debugging line to check the API endpoint
+
   console.log("API Endpoint:", apiEndpoint);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import React from "react";
 
 const apiEndpoint = process.env.NEXT_PUBLIC_REST_API_ENDPOINT;
 
-  console.log("API Endpoint:", apiEndpoint); // Debugging line to check the API endpoint
+
 
 
 const SingleReview = ({ review }) => {
